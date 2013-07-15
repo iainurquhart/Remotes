@@ -48,8 +48,7 @@
 				array('data' => $drag_handle, 'class' => 'roland_drag_handle'),
 				form_input("urls[$i]", $r['url']),
 				form_input("cache_file_names[$i]", $r['file_name']).
-				form_hidden("ids[$i]", $r['id']).
-				form_hidden("order[$i]", $r['order']),
+				form_hidden("ids[$i]", $r['id']),
 				form_input("lifetime[$i]", $r['lifetime']),
 				array('data' => $nav, 'class' => 'roland_nav')
 			);
