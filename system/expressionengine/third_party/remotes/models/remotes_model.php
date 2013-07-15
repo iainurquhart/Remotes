@@ -23,8 +23,9 @@ class Remotes_model extends Remotes_base
 
 	public function get_remotes()
 	{
-		ee()->db->where('site_id', $this->site_id);
-		ee()->db->order_by('order');
+		ee()->db->select('id, site_id, last_updated, url, file_name, lifetime')
+				->where('site_id', $this->site_id)
+				->order_by('order');
 		return ee()->db->get('remotes')->result_array();
 	}
 
@@ -62,7 +63,7 @@ class Remotes_model extends Remotes_base
 
 		$data = array(
 			'data' =>  $remote_data,
-			'last_updated' => time(),
+			'last_updated' => ee()->localize->now,
 			'type' => $mime
 		);
 		ee()->db->where('id', $id);

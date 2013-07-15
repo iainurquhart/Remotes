@@ -13,3 +13,5 @@
 .remotes_url_builder {
 	padding: 50px 0 20px 0;
 }
+
+.remote_last_updated {white-space: nowrap;}

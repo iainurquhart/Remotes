@@ -20,7 +20,7 @@
 				$r['url'],
 				$loc_url,
 				$r['file_name'],
-				($r['last_updated'] == 0) ? '--' : $r['last_updated'],
+				array('data' => ($r['last_updated'] == 0) ? '--' : $r['nice_date'], 'class' => 'remote_last_updated'),
 				anchor($base_url.AMP.'method=clear_remote_data'.AMP.'id='.$r['id'], lang('clear_remote'), array('class' => 'submit')),
 				anchor($loc_url, 'View', array('target' => '_blank', 'class' => 'submit'))
 			);

@@ -62,6 +62,7 @@ class Remotes_mcp extends Remotes_base {
 	{
 		ee()->load->library('table');
 		ee()->load->helper('url');
+		ee()->load->helper('date');
 		ee()->view->cp_page_title = lang('remotes_module_name');
 
 		// add our css
@@ -73,6 +74,11 @@ class Remotes_mcp extends Remotes_base {
 		// post values in example form
 		$vars['base_url'] = $this->base_url;
 		$vars['remotes'] = ee()->remotes->get_remotes();
+		foreach($vars['remotes'] as &$remote)
+		{
+			$remote['nice_date'] = ee()->localize->human_time($remote['last_updated'], TRUE);
+		}
+
 		$act_id = ee()->cp->fetch_action_id('Remotes', 'fetch_remote');
 		$vars['act_base']= ee()->functions->fetch_site_index(0, 0).QUERY_MARKER.'ACT='.$act_id;
 
@@ -103,8 +109,6 @@ class Remotes_mcp extends Remotes_base {
 
 		$vars = array();
 		$vars['_form_base_url'] = $this->form_base_url;
-		
-		// post values in example form
 		$vars['remotes'] = ee()->remotes->get_remotes();
 		
 		// misc assets/classes required

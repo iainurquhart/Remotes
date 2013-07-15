@@ -59,7 +59,7 @@ class Remotes extends Remotes_base {
 		ee()->db->where('file_name', $short_name);
 		$r = ee()->db->get('remotes')->row_array();
 
-		$now = time();
+		$now = ee()->localize->now;
 
 		if($r['data'] == '' || $r['last_updated'] == '' || $now > ($r['last_updated']+$cache_time) )
 		{
